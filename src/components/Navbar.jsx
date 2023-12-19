@@ -65,7 +65,7 @@ const Navbar = () => {
           >
             Application Form
           </Typography>
-          {userData.length > 0 && (
+          {userData && userData.name && (
             <Typography
               variant="h6"
               style={{
