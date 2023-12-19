@@ -13,8 +13,7 @@ const defaultTheme = createTheme();
 
 const Form = () => {
   const [formData, setFormData] = React.useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     gender: "",
     age: "",
@@ -33,12 +32,11 @@ const Form = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(formData);
-    alert("Form submitted")
+    alert("Form submitted");
   };
 
   return (
     <>
-     
       <ThemeProvider theme={defaultTheme}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
@@ -66,31 +64,20 @@ const Form = () => {
               }}
             >
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12}>
                   <TextField
                     autoComplete="given-name"
-                    name="firstName"
+                    name="name"
                     required
                     fullWidth
-                    id="firstName"
-                    label="First Name"
+                    id="name"
+                    label="Your Name"
                     autoFocus
-                    value={formData.firstName}
+                    value={formData.name}
                     onChange={handleInputChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    required
-                    fullWidth
-                    id="lastName"
-                    label="Last Name"
-                    name="lastName"
-                    autoComplete="family-name"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                  />
-                </Grid>
+
                 <Grid item xs={12}>
                   <TextField
                     required

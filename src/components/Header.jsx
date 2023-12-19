@@ -7,7 +7,7 @@ const Header = () => {
       <div
         style={{
           backgroundImage: `url(${yoga_bg})`,
-          height: "500px",
+          height: "700px",
           backgroundPosition: "center",
           backgroundSize: "100% 100%",
         }}

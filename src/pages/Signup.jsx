@@ -7,14 +7,16 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const defaultTheme = createTheme();
 
 const Signup = () => {
+  const host = process.env.REACT_APP_API_URL;
+  const navigate = useNavigate();
   const [formData, setFormData] = React.useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     password: "",
   });
@@ -29,10 +31,19 @@ const Signup = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
-    alert("Form submitted");
-  };
 
+    try {
+      const response = await axios.post(`${host}/api/signup`, formData);
+
+      // Assuming the response contains a token or user data you want to save in localStorage
+      localStorage.setItem("userData", JSON.stringify(response.data));
+
+      navigate("/");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to submit form");
+    }
+  };
   return (
     <>
       <ThemeProvider theme={defaultTheme}>
@@ -62,31 +73,20 @@ const Signup = () => {
               }}
             >
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12}>
                   <TextField
                     autoComplete="given-name"
-                    name="firstName"
+                    name="name"
                     required
                     fullWidth
-                    id="firstName"
-                    label="First Name"
+                    id="name"
+                    label="Your Name"
                     autoFocus
-                    value={formData.firstName}
+                    value={formData.nameame}
                     onChange={handleInputChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    required
-                    fullWidth
-                    id="lastName"
-                    label="Last Name"
-                    name="lastName"
-                    autoComplete="family-name"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                  />
-                </Grid>
+
                 <Grid item xs={12}>
                   <TextField
                     required

@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Typography, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-
 const Navbar = () => {
   const navigate = useNavigate();
+  const [userData, setUserData] = useState([]);
+  useEffect(() => {
+    // Retrieve userData from localStorage
+    const userData = localStorage.getItem("userData");
+
+    // Check if userData exists in localStorage
+    if (userData) {
+      // Parse userData if it's stored as a JSON string
+      const parsedUserData = JSON.parse(userData);
+
+      // Use parsedUserData as needed in your component
+      setUserData(parsedUserData.user);
+    }
+  }, []); // Empty dependency array to run this effect only once when component mounts
 
   const handleClick = () => {
     navigate("/");
@@ -30,7 +43,7 @@ const Navbar = () => {
           }}
           onClick={handleClick}
         >
-         YOGA CLASSES
+          YOGA CLASSES
         </Typography>
         <Box
           style={{
@@ -41,24 +54,41 @@ const Navbar = () => {
         >
           <Typography
             variant="h6"
-            style={{ fontWeight: 700, fontFamily: "'Montserrat', sans-serif" }}
-            onClick={()=>navigate("/form")}
-            >
+            style={{
+              fontWeight: 700,
+              fontFamily: "'Montserrat', sans-serif",
+              cursor: "pointer",
+            }}
+            onClick={() =>
+              userData && userData.name ? navigate("/form") : navigate("/login")
+            }
+          >
             Application Form
           </Typography>
-          <Typography
+          {userData.length > 0 && (
+            <Typography
               variant="h6"
-              style={{ fontWeight: 700, fontFamily: "'Montserrat', sans-serif" }}
-              onClick={()=>navigate("/profile")}
-              >
-            Profile
-          </Typography>
-          <Typography
+              style={{
+                fontWeight: 700,
+                fontFamily: "'Montserrat', sans-serif",
+              }}
+              onClick={() => navigate("/profile")}
+            >
+              Profile
+            </Typography>
+          )}
+          {userData.length === 0 && (
+            <Typography
               variant="h6"
-            style={{ fontWeight: 700, fontFamily: "'Montserrat', sans-serif" }}
-          >
-            Login
-          </Typography>
+              style={{
+                fontWeight: 700,
+                fontFamily: "'Montserrat', sans-serif",
+              }}
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </Typography>
+          )}
         </Box>
         <Typography
           style={{
@@ -67,8 +97,7 @@ const Navbar = () => {
             fontWeight: 700,
             fontFamily: "'Montserrat', sans-serif",
           }}
-        >
-        </Typography>
+        ></Typography>
       </Container>
     </>
   );

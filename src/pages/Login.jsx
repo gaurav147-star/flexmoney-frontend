@@ -8,10 +8,11 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
-
+import axios from "axios";
 const defaultTheme = createTheme();
 
 const Login = () => {
+  const host = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
   const [formData, setFormData] = React.useState({
     email: "",
@@ -28,8 +29,18 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
-    navigate("/");
+
+    try {
+      const response = await axios.post(`${host}/api/login`, formData);
+
+      // Assuming the response contains a token or user data you want to save in localStorage
+      localStorage.setItem("userData", JSON.stringify(response.data));
+
+      navigate("/");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to submit form");
+    }
   };
 
   return (
