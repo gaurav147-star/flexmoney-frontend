@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Yoga Classes Admission Form
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+As the chosen outsourcing firm responsible for building the admission form for monthly yoga classes, our goal is to create a user-friendly and efficient system that allows eligible individuals to enroll in the classes. This admission form adheres to specific requirements outlined by the client:
 
-In the project directory, you can run:
+### Requirements:
 
-### `npm start`
+- Eligibility: Only individuals aged between 18-65 can enroll.
+- Payment: Participants are required to pay a monthly fee of 500/- Rs INR.
+- Enrollment: Individuals can enroll any day of the month but are required to pay for the entire month.
+- Batches: Four available batches: 6-7AM, 7-8AM, 8-9AM, and 5-6PM. Participants can choose any batch each month and switch to another batch in subsequent months.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Functionality
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This admission form implements the following functionalities:
 
-### `npm test`
+- **Signup:** Allows new users to register for the yoga classes using the endpoint `POST /api/signup`.
+- **Login:** Registered users can log in using the endpoint `POST /api/login` to access their profiles.
+- **Update Profile:** Users can update their profiles (including gender, age, batch preference) via the endpoint `PUT /api/user`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## API Endpoints
 
-### `npm run build`
+- **Signup Endpoint:** `POST /api/signup`
+  - Use this endpoint for new user registrations.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Login Endpoint:** `POST /api/login`
+  - Use this endpoint for user login to access profiles.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **User Profile Update Endpoint:** `PUT /api/user`
+  - Use this endpoint to update user profiles.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Local Development
 
-### `npm run eject`
+To run the project locally:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clone the repository.
+2. Install dependencies using `npm install`.
+3. Set up the necessary environment variables.
+4. Start the development server using `npm start`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies Used
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Backend Framework:** NODEJS, EXPRESSJS
+- **Database:** MONGO DB
+- **API Testing:** POSTMAN
+- **Frontend (if applicable):** REACTJS
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Screenshots
 
-## Learn More
+![image](https://github.com/gaurav147-star/flexmoney-frontend/assets/78996081/a5d3ad2d-c8c1-414b-85f7-a9ddea9f33aa)
+![image](https://github.com/gaurav147-star/flexmoney-frontend/assets/78996081/78957365-1d90-4cee-945f-2df4d588407b)
+![image](https://github.com/gaurav147-star/flexmoney-frontend/assets/78996081/de1c0584-1499-4784-9544-e76e8165e272)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
